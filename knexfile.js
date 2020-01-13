@@ -5,14 +5,20 @@ module.exports = {
   development: {
     client: 'sqlite3',
     connection: {
-      filename: './todo.db3'
+      filename: './data/todo.db3'
     },
     pool: {
       afterCreate: (conn, done) => {
         conn.run('PRAGMA foreign_keys = ON', done);
       },
     },
-    useNullAsDefault: true
+    useNullAsDefault: true,
+    migrations: {
+      directory: './data/migrations'
+    },
+    seeds: {
+      directory: './data/seeds'
+    }
   },
 
   // staging: {
